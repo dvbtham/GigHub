@@ -1,11 +1,11 @@
 @extends('shared.layout')
-@section('title', 'Đăng nhập')
+@section('title', 'Login')
 @section('body')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Đăng nhập hệ thống</div>
+                <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Mật khẩu') }}</label>
+                            <label for="password" class="col-md-2 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
@@ -38,7 +38,7 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="checkbox">
                                     <label>
-                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Ghi nhớ cho lần sau') }}
+                                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember me') }}
                                                 </label>
                                 </div>
                             </div>
@@ -47,11 +47,11 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                                {{ __('Đăng nhập') }}
+                                                {{ __('Login') }}
                                             </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Quên mật khẩu?') }}
+                                                {{ __('Forgot password?') }}
                                             </a>
                             </div>
                         </div>

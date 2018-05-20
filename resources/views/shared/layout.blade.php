@@ -15,52 +15,43 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class = "navbar-brand">GigHub</a>
+    @include('shared.nav')
+    <div class="container body-content">
+        <div class="row">
+            <div class="col-md-9">
+                @yield('body')
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ route('gigs.create') }}" class = "navbar-brand">Add a Gig</a></li>
+            <div class="col-md-3">
+                <h2>New gigs</h2>
+                <ul class="gigs voffset40">
+                    <li class="gig-item">
+                        <div class="date">
+                            <div class="month">
+                                May
+                            </div>
+                            <div class="day">
+                                23
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="artist">
+                                Thâm Davies
+                            </div>
+
+                            <div class="genre">
+                                Blues
+                            </div>
+                            <div class="actions">
+                                <button data-following-id="81aaeb77-1997-4f39-b38d-5f77fd3f359b" class="btn btn-default btn-sm js-toggle-following">Follow</button>
+                                <button data-gig-id="4" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="gig-line"></li>
                 </ul>
-                @if(\Auth::check())
-                 {!! Form::open(['route' => 'logout', 'id' => 'logoutForm']) !!}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="notifications">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-globe"></i>
-                                <span class="badge js-notifications-count hide">2</span>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/">My Upcoming Gigs</a></li>
-                                <li><a href="/">Gigs I'm Going</a></li>
-                                <li><a href="/">Artist I'm following</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    {!! Form::close() !!}
-                    @else
-                    <ul class="nav navbar-nav navbar-right">
-                            <li><a href="{{ route('register') }}">Đăng ký</a></li>
-                        <li><a href="{{ route('login') }}">Đăng nhập</a></li>
-                        </ul>
-                    @endif
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @yield('body')
     <hr />
     <footer>
         <p>&copy; 2018 - GigHub</p>

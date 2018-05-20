@@ -22,4 +22,9 @@ class Gig extends NoTimeStampModel
     {
         return $this->belongsTo('App\Model\Genre');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
 }

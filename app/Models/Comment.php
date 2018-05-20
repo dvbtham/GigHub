@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends NoTimeStampModel
+class Comment extends Model
 {
-    protected $fillable = ['type', 'datetime', 'original_datetime', 'original_venue', 'gig_id'];
+    protected $fillable = ['name', 'email', 'comment', 'approved', 'gig_id'];
 
     public function gig()
     {

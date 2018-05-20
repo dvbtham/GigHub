@@ -19,10 +19,10 @@ Auth::routes();
 
 Route::middleware('auth')->group(function(){
     Route::get('/upcomings', 'GigsController@index')->name('gigs.index');
-    Route::get('/gigs/create', 'GigsController@create')->name('gigs.create');
-    Route::post('/gigs/create', 'GigsController@store')->name('gigs.store');
-    Route::get('/gigs/{id}/edit', 'GigsController@edit')->name('gigs.edit');
-    Route::post('/gigs/{id}/edit', 'GigsController@update')->name('gigs.update');
+    Route::resource('gigs', 'GigsController');
+    Route::get('following', 'FollowingsController@following')->name('following');
+    Route::get('/gigs/upcom/mine', 'GigsController@mine')->name('gigs.mine');
+
 });
 
 Route::get('/', 'HomeController@upcomings')->name('home');

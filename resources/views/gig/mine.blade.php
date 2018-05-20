@@ -1,8 +1,7 @@
 @extends('shared.layout')
 @section('title', 'Trang chủ')
-
 @section('body')
-<h2>Upcoming Gigs</h2>
+<h2>My Upcoming Gigs</h2>
 <ul class="gigs voffset40">
     <li class="gig-item">
         <div class="date">
@@ -21,9 +20,9 @@
             <div class="genre">
                 Blues
             </div>
-            <div class="actions">
-                <button data-following-id="81aaeb77-1997-4f39-b38d-5f77fd3f359b" class="btn btn-default btn-sm js-toggle-following">Follow</button>
-                <button data-gig-id="4" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+            <div class="actions-link">
+                <i class="glyphicon glyphicon-edit fs-13 text-info"></i> <a href="">Edit</a>
+                <i class="glyphicon glyphicon-trash fs-13 text-danger"></i> <a href="#" data-gig-id="" class="js-cancel-gig">Delete</a>
             </div>
 
         </div>
