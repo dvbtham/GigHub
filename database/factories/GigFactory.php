@@ -9,8 +9,9 @@ $factory->define(App\Models\Gig::class, function (Faker $faker) {
     $genre_id = db::getTableId('genres', 'id');
 
     return [
+        'title' => $faker->realText($maxNbChars = 100, $indexSize = 2),
         'venue' => $faker->streetAddress,
-        'date' => $faker->dateTime,
+        'date' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+ 1 day', $timezone = null),
         'genre_id' => $genre_id,
         'artist_id' => $artist_id,
         'is_canceled' => false,

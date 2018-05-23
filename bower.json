@@ -1,0 +1,15 @@
+{
+  "name": "gighub",
+  "description": "GigHub",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "parsleyjs": "^2.8.1"
+  }
+}

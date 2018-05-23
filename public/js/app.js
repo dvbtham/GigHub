@@ -16,6 +16,24 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+
+    const inputDate = $('.datetimepicker');
+    const summernote = $('.summernote');
+
+    if (inputDate) {
+        inputDate.datetimepicker({ format: 'DD/MM/YYYY HH:MM' });
+        inputDate.on('keydown', () => { return false; });
+    }
+
+    if (summernote)
+        summernote.summernote();
+
+    $('#logoff').on('click', function () {
+        document.getElementById('logoutForm').submit();
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
+    });
+
     $.getJSON("/api/notifications", function (notifications) {
         $(".js-notifications-count")
             .text(notifications.length)
@@ -37,6 +55,5 @@
                     $(".js-notifications-count").text("").addClass("hide");
                 })
         });
-
     });
 })

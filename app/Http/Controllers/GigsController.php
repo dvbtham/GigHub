@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\GigFormRequest;
 use App\Models\Genre;
 use App\Models\Gig;
 use Auth;
+use Carbon\Carbon;
+
 class GigsController extends Controller
 {
     public function index()
@@ -24,16 +27,34 @@ class GigsController extends Controller
         return view('gig.create', compact('genres'));
     }
 
-    public function store(Request $request)
+    public function store(GigFormRequest $request)
     {
-        $genres = Genre::pluck('name', 'id');
-        return view('gig.create', compact('genres'));
+        try {
+            $gig = new Gig([
+                'venue' => $request->venue,
+                'date' => Carbon::createFromFormat('d/m/Y H:i', $request->date),
+                'description' => $request->description,
+                'genre_id' => $request->genre_id,
+                'artist_id' => Auth::user()->id,
+                'is_canceled' => false
+            ]);
+
+            $gig->save();
+
+            \Session::flash('success', 'Gig was successfully added.');
+
+            return redirect()->back();
+        }
+        catch(\Illuminate\Database\QueryException $ex) {
+            return redirect()->back();
+        }
+
     }
 
     public function show($id)
     {
-        $genres = Genre::pluck('name', 'id');
-        return view('gig.edit', compact('genres'));
+        $gig = Gig::findOrFail($id);
+        return view('gig.detail', compact('gig'));
     }
 
     public function edit($id)

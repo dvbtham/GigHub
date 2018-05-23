@@ -2,10 +2,10 @@
 @section('title', 'Add a new Gig')
 @section('body')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
         <h2>Create new Gig</h2>
-        {{ Form::open(['route'=> 'gigs.store']) }}
-            <div class="alert alert-info">All fields are <strong>required</strong>.</div>
+        {{ Form::open(['route'=> 'gigs.store', 'role'=> 'form']) }}
+            <div class="alert alert-warning mb-0">All fields are <strong>required</strong>.</div>
             <br>
             <div class="form-group">
                 {{ Form::label('Venue') }}
@@ -13,19 +13,25 @@
             </div>
             <div class="form-group">
                 {{ Form::label('Date') }}
-                {{ Form::text('date', null, ['class'=> 'form-control']) }}
+                <div class='input-group date datetimepicker'>
+                    {{ Form::text('date', null, ['class'=> 'form-control']) }}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
             <div class="form-group">
-                {{ Form::label('Time') }}
-                {{ Form::text('time', null, ['class'=> 'form-control']) }}
+                {{ Form::label('Description') }}
+                {{ Form::textarea('description', null, ['class'=> 'form-control summernote']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('Genre') }}
                 {{ Form::select('genre_id', $genres, null, ['class'=> 'form-control']) }}
             </div>
 
-            <input type="submit" value="Save" class="btn btn-primary" />
-            <input type="button" value="Cancel" onclick="window.location.href='/'" class="btn btn-danger" />
+            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i>&nbsp; Save</button>
+            <a href="{{ route('home') }}" class="btn btn-danger"><i class="glyphicon glyphicon-share-alt"></i>&nbsp; Cancel</a>
+
         {{ Form::close() }}
         </div>
     </div>

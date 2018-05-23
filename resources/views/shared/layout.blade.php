@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - GigHub</title>
     <link href="{{url ('css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link href="{{url ('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet"/>
+    <link href="{{url ('bower_components/parsleyjs/src/parsley.css')}}" rel="stylesheet"/>
     <link href="{{url ('css/toastr.min.css')}}" rel="stylesheet"/>
     <link href="{{url ('css/animate.min.css')}}" rel="stylesheet"/>
+    <link href="{{url ('/vendors/summernote-0.8.9-dist/dist/summernote.css')}}" rel="stylesheet"/>
     <link href="{{url ('css/site.css')}}" rel="stylesheet"/>
 
     <script src="{{url ('js/modernizr-2.6.2.js')}}"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+    @yield('styles')
 </head>
 <body>
     @include('shared.nav')
@@ -56,13 +59,21 @@
     <footer>
         <p>&copy; 2018 - GigHub</p>
     </footer>
+    <input type="hidden" id="uname" value="{{ $currentUser['name'] }}">
+    <input type="hidden" id="uemail" value="{{ $currentUser['email'] }}">
+    <input type="hidden" id="avatar" value="/images/{{ $currentUser['avatar'] }}">
     </div>
 
     <script src="/js/jquery-1.10.2.js"></script>
+    <script src="/bower_components/moment/min/moment.min.js"></script>
     <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery-dateformat.min.js"></script>
+    <script src="{{url ('bower_components/parsleyjs/dist/parsley.min.js')}}"></script>
+    <script src="/vendors/summernote-0.8.9-dist/dist/summernote.min.js"></script>
+    <script src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <script src="/js/bootbox.min.js"></script>
     <script src="/js/underscore-min.js"></script>
-    <script src="/js/moment.min.js"></script>
+
     <script src="/js/respond.min.js"></script>
     <script src="/js/toastr.min.js"></script>
     <script src="/js/toggle-attendances.js"></script>

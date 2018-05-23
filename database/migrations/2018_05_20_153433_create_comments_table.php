@@ -15,8 +15,8 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 250);
-            $table->string('email', 250);
+            $table->string('name', 250)->nullable();
+            $table->string('email', 250)->nullable();
             $table->text('comment');
             $table->boolean('approved')->default(true);
             $table->unsignedInteger('gig_id');

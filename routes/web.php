@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
 Route::middleware('auth')->group(function(){
@@ -25,4 +21,12 @@ Route::middleware('auth')->group(function(){
 
 });
 
+Route::middleware('auth')->namespace('Admin')->prefix('admin')->group(function(){
+    Route::get('/dashboard', 'HomeController@dashboard')->name('admin.dashboard');
+});
+
+Route::get('/upcoms/{q?}', 'HomeController@upcomings')->name('home');
 Route::get('/', 'HomeController@upcomings')->name('home');
+Route::get('/', 'HomeController@upcomings')->name('home');
+Route::post('comment', 'CommentsController@store')->name('comments.store');
+Route::get('/gig/{id}', 'HomeController@show')->name('home.showgig');
