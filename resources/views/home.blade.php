@@ -45,8 +45,8 @@
                 </span>
             </div>
             <div class="actions">
-                <button data-following-id="{{ $gig->artist->id }}" class="btn btn-default btn-sm js-toggle-following">Follow</button>
-                <button data-gig-id="{{ $gig->id }}" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
+                <button data-following-id="{{ $gig->artist->id }}" class="btn {{ $gig->isFollowing($gig->artist->id) ? "btn-info" : "btn-default" }} btn-sm js-toggle-following">{{ $gig->isFollowing($gig->artist->id) ? "Following" : "Follow" }}</button>
+                <button data-gig-id="{{ $gig->id }}" class="btn {{ $gig->isGoing($gig->id) ? "btn-info" : "btn-default" }} btn-sm js-toggle-attendance">Going?</button>
             </div>
 
         </div>

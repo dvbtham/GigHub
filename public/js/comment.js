@@ -166,6 +166,8 @@ var CommentController = function (result) {
             data.name = name;
             data.email = email;
 
+            console.log(data); return;
+
             $.post("/api/comments", data)
                 .done(result.replyDone)
                 .fail(result.replyFailed);

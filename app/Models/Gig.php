@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Following;
+use App\Models\Attendence;
 
 class Gig extends NoTimeStampModel
 {
@@ -26,6 +28,22 @@ class Gig extends NoTimeStampModel
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
+    }
+
+    public function isFollowing($followeeId)
+    {
+        $userId = \Auth::check() ? \Auth::user()->id : 0;
+        $exists = Following::where('followee_id', $followeeId)
+            ->where('follower_id', $userId)->where('is_canceled', false)->first() !== null;
+        return $exists;
+    }
+
+    public function isGoing($gigId)
+    {
+        $userId = \Auth::check() ? \Auth::user()->id : 0;
+        $exists = Attendence::where('gig_id', $gigId)
+            ->where('attendee_id', $userId)->where('is_canceled', false)->first() !== null;
+        return $exists;
     }
 
     public function parentComments()

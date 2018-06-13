@@ -7,12 +7,12 @@ var AttendanceController = function () {
     var attendancesToggle = function (e) {
         e.preventDefault();
         button = $(e.target);
-        $.post("/api/attendances", { gigId: button.attr("data-gig-id") })
+        $.post("/api/attendances", { gigId: button.attr("data-gig-id"), userId: $('#uid').val() })
             .done(done)
             .fail(failed);
     };
-    var failed = function () {
-        toastr.error(res.responseJSON.Message);
+    var failed = function (res) {
+        toastr.error(res.responseJSON);
     };
     var done = function (res) {
         var text = (button.text() == "Going") ? "Going?" : "Going";

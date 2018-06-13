@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') - GigHub</title>
     <link href="{{url ('css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link href="{{url ('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet"/>
@@ -61,6 +62,7 @@
     </footer>
     <input type="hidden" id="uname" value="{{ $currentUser['name'] }}">
     <input type="hidden" id="uemail" value="{{ $currentUser['email'] }}">
+    <input type="hidden" id="uid" value="{{ $currentUser['id'] }}">
     <input type="hidden" id="avatar" value="/images/{{ $currentUser['avatar'] }}">
     </div>
 
